@@ -1,0 +1,18 @@
+{
+	"name": "gsf-extension-readability",
+	"version": "0.1.0",
+	"description": "Extract content parsed by Firefox Reader View",
+	"main": "dist/Readability.js",
+	"author": {
+		"name": "Author A"
+	},
+	"license": "MIT",
+	"homepage": "https://github.com/a1sabau/gsf-extension-readability",
+	"dist": {
+		"integrity": "sha512-Z3XfEJtjC+FJ68XhrcmlV4furGljj7vo61YGEJJnBWIXIB3j5jXA6ocpSMTIlshF13oT2Nj6+ujqYjWeZwmj/Q==",
+		"shasum": "babcbeabcddae752796fb3f30beae09757d2dd7b",
+		"tarball": "https://registry.npmjs.org/gsf-extension-readability/-/gsf-extension-readability-0.1.0.tgz",
+		"fileCount": 11,
+		"unpackedSize": 11280
+	}
+}
