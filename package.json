@@ -1,7 +1,7 @@
 {
   "name": "gsf-extension-readability",
   "version": "0.1.0",
-  "description": "get-set-fetch extension scenario based on mozilla readability library",
+  "description": "Extract article content using Mozilla Readability library.",
   "main": "dist/Readability.js",
   "scripts": {
     "clean": "shx rm -rf dist",
