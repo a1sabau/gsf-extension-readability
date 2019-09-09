@@ -1,7 +1,10 @@
 {
   "name": "gsf-extension-readability",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Extract article content using Mozilla Readability library.",
+  "files": [
+    "dist/"
+  ],
   "main": "dist/Readability.js",
   "scripts": {
     "clean": "shx rm -rf dist",
