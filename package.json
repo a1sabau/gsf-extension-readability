@@ -2,6 +2,7 @@
   "name": "gsf-extension-readability",
   "version": "0.1.1",
   "description": "Extract article content using Mozilla Readability library.",
+  "homepage": "https://github.com/a1sabau/gsf-extension-readability",
   "files": [
     "dist/"
   ],
