@@ -1,32 +1,23 @@
-import { SchemaHelper, IPlugin, ISite, IResource } from 'get-set-fetch-extension-commons';
+import { ISite, IResource, BasePlugin, IEnhancedJSONSchema } from 'get-set-fetch-extension-commons';
 import Readability from 'readability/Readability';
 
-export default class ReadabilityPlugin implements IPlugin {
-  opts: {
-    runInTab: boolean;
-    selectors: string;
-  };
-
-  constructor(opts) {
-    this.opts = SchemaHelper.instantiate(ReadabilityPlugin.OPTS_SCHEMA, opts);
-  }
-
-  static get OPTS_SCHEMA() {
+export default class ReadabilityPlugin extends BasePlugin {
+  getOptsSchema(): IEnhancedJSONSchema {
     return {
       $id: 'a1sabau/gsf-extension-readability.schema.json',
       $schema: 'http://json-schema.org/draft-07/schema#',
       title: 'ReadabilityPlugin',
       type: 'object',
       properties: {
-        runInTab: {
+        domRead: {
           type: 'boolean',
-          default: true,
+          const: true,
         },
       },
     };
   }
 
-  test(resource: IResource) {
+  test(site: ISite, resource: IResource) {
     return (/html/i).test(resource.mediaType);
   }
 
@@ -34,15 +25,8 @@ export default class ReadabilityPlugin implements IPlugin {
     const article = new Readability(document).parse();
 
     return {
-      info: {
-        article: Object.assign(
-          article,
-          {
-            content: this.deflate(article.content),
-            textContent: this.deflate(article.textContent),
-          }
-        ),
-      },
+      content:
+        (({ title, textContent, excerpt }) => ({ title, textContent: this.deflate(textContent), excerpt }))(article),
     };
   }
 

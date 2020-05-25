@@ -1,40 +1,17 @@
-import { IScenario, ExportType, IPluginDefinition, IEnhancedJSONSchema } from 'get-set-fetch-extension-commons';
+import { IScenario, ExportType } from 'get-set-fetch-extension-commons';
 
-import ConfigFormSchema from '../resources/config-form-schema';
 import ReadabilityPlugin from './plugins/ReadabilityPlugin';
 
 export default class Readability implements IScenario {
-  getConfigFormSchema() {
-    return ConfigFormSchema as IEnhancedJSONSchema;
-  }
-
-  getConfigFormUISchema() {
-    return ConfigFormSchema as IEnhancedJSONSchema;
-  }
-
-  getPluginDefinitions(scenarioProps) {
-    const pluginDefinitions: IPluginDefinition[] = [
-      {
-        name: 'SelectResourcePlugin',
-      },
-      {
-        name: 'FetchPlugin',
-      },
-      {
-        name: 'ExtractUrlsPlugin',
-      },
-      {
-        name: 'ReadabilityPlugin',
-      },
-      {
-        name: 'UpdateResourcePlugin',
-      },
-      {
-        name: 'InsertResourcesPlugin',
-      },
+  getPluginNames() {
+    return [
+      'SelectResourcePlugin',
+      'FetchPlugin',
+      'ExtractUrlsPlugin',
+      'ReadabilityPlugin',
+      'InsertResourcesPlugin',
+      'UpsertResourcePlugin',
     ];
-
-    return pluginDefinitions;
   }
 
   getResultTableHeaders() {
@@ -54,9 +31,13 @@ export default class Readability implements IScenario {
     return [
       {
         type: ExportType.CSV,
-        cols: [ 'url', 'info.article' ],
+        cols: [ 'url', 'content' ],
         fieldSeparator: ',',
         lineSeparator: '\r\n',
+      },
+      {
+        type: ExportType.ZIP,
+        cols: [ 'blob' ],
       },
     ];
   }
